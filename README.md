@@ -1,2 +1,2 @@
 # DevTinder
-Matching recruiters with developers
+Matching recruiters with developers easily
