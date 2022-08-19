@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ErrorBoundaryStyled from "./ErrorBoundaryStyled";
+import {ErrorBoundaryStyled} from "./ErrorBoundaryStyled";
 
 //components
 import ErrorBoundarySvg from "../../../assets/SVGs/ErrorBoundaryIcon";
