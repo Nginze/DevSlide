@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import {ErrorBoundaryStyled} from "./ErrorBoundaryStyled";
 
 //components
 import ErrorBoundarySvg from "../../../assets/SVGs/ErrorBoundaryIcon";
-
+import { ErrorStyled } from "../ErrorStyled";
 
 class ErrorBoundary extends Component {
   constructor(props) {
@@ -22,7 +21,7 @@ class ErrorBoundary extends Component {
   render() {
     if (this.state.errorInfo) {
       return (
-        <ErrorBoundaryStyled>
+        <ErrorStyled>
             <div className='errorWrapper'>
             <div>
                 <ErrorBoundarySvg />
@@ -30,7 +29,7 @@ class ErrorBoundary extends Component {
                 <strong>Oops! Something went wrong, we are fixing it</strong>
             </div>
             </div>
-        </ErrorBoundaryStyled>
+        </ErrorStyled>
       );
     }
     return this.props.children;

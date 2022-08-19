@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 
-export const ErrorBoundaryStyled = styled.div`
+export const ErrorStyled = styled.div`
 
     .errorWrapper {
         display: grid;
