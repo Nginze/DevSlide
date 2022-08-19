@@ -33,7 +33,7 @@ const Settings = () => {
                         <Avatar sx={{width:120, height:120}} 
                              alt="user-profile" src={PROFILE_PIC} 
                         />
-                        <h2>John Doe</h2>
+                        <h2>John Kwame Doe</h2>
                     </div>
                         <div className="inputs">
                             <TextField 
@@ -57,8 +57,58 @@ const Settings = () => {
                                 size="medium" sx={{width:730}} variant="outlined" 
                             /> 
                         </Box> 
-                        <p className="select">Select your top skills and profiency (3 maximum*)</p>
+                        <p className="select">Select your top skills and proficiency (4 maximum*)</p>
     
+                        <div className="inputs">
+                            <Select onChange={changeSkill} value={skills} sx={{width:350}}>
+                                {
+                                    devSkills?.map((skill, key) => {
+                                       return <MenuItem key={key} value={skill}>{skill}</MenuItem>
+                                    })
+                                }
+                            </Select>
+                            <Select onChange={changeProf} value={prof} sx={{width:350}}>
+                                {
+                                    proficiency?.map((level,key) => {
+                                        return <MenuItem key={key} value={level}>{level}</MenuItem>
+                                    })
+                                }
+                            </Select>
+                        </div>
+
+                        <div className="inputs">
+                            <Select onChange={changeSkill} value={skills} sx={{width:350}}>
+                                {
+                                    devSkills?.map((skill, key) => {
+                                       return <MenuItem key={key} value={skill}>{skill}</MenuItem>
+                                    })
+                                }
+                            </Select>
+                            <Select onChange={changeProf} value={prof} sx={{width:350}}>
+                                {
+                                    proficiency?.map((level,key) => {
+                                        return <MenuItem key={key} value={level}>{level}</MenuItem>
+                                    })
+                                }
+                            </Select>
+                        </div>
+
+                        <div className="inputs">
+                            <Select onChange={changeSkill} value={skills} sx={{width:350}}>
+                                {
+                                    devSkills?.map((skill, key) => {
+                                       return <MenuItem key={key} value={skill}>{skill}</MenuItem>
+                                    })
+                                }
+                            </Select>
+                            <Select onChange={changeProf} value={prof} sx={{width:350}}>
+                                {
+                                    proficiency?.map((level,key) => {
+                                        return <MenuItem key={key} value={level}>{level}</MenuItem>
+                                    })
+                                }
+                            </Select>
+                        </div>
                         <div className="inputs">
                             <Select onChange={changeSkill} value={skills} sx={{width:350}}>
                                 {

@@ -9,11 +9,10 @@ export const CardStyled = styled.section`
         justify-content: center;
         margin-top:2rem;
         gap:5rem;
-        /* position:absolute */
     }
 
     .card{
-        box-shadow: -4px -1px 35px -13px rgba(0,0,0,0.25);
+        box-shadow: -4px -1px 17px -5px rgba(0,0,0,0.2);
         border-radius: 13px;
 
     }
@@ -32,6 +31,15 @@ export const CardStyled = styled.section`
         background-color: #d9534f;
         width:70px;
         height:70px;
+    }
+
+    .card_wrapper{
+        padding:7px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap:2rem;
+        margin-bottom:3rem;
+
     }
 
 `

@@ -6,6 +6,8 @@ import { HomeStyled } from "./HomeStyled";
 import { useState } from "react";
 import Settings from "../Preferences/Settings"
 import styled from "styled-components";
+import Match from "../Matches/Match";
+import Profile from "../Profile/Profile";
 
 const EnableScroll = styled.section`
     height:100vh;
@@ -41,6 +43,16 @@ const Home = () => {
                         <Settings />
                     </EnableScroll>
                 </>
+                }
+                {
+                    value === "matches" && <>
+                        <Match />
+                    </>
+                }
+                {
+                    value === "profile" && <>
+                        <Profile />
+                    </>
                 }
             </HomeStyled>
         </>
