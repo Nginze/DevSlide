@@ -1,4 +1,5 @@
 export const devSkills = [
+    "Choose a skill",
     "JavaScript",
     "React.js",
     "HTML,CSS",
@@ -8,6 +9,7 @@ export const devSkills = [
 ]
 
 export const proficiency = [
+    "Choose proficiency",
     "Intermediate",
     "Beginner",
     "Advanced"

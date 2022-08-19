@@ -1,9 +1,5 @@
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
 import PROFILE_PIC from "../../../assets/default.png";
-import { Button, Tooltip } from '@mui/material';
+import { Button, Tooltip, Typography, CardMedia, CardContent, Card } from '@mui/material';
 import { CardStyled } from './CardStyled';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
@@ -21,7 +17,7 @@ const DevCard = () => {
             />
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                    John Doe
+                    John Kwame Doe
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                     I am a developer from USA who is proficient in React.js and 
