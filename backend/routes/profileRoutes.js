@@ -7,7 +7,7 @@ const {
 const router = Router();
 
 router.get("/", getUserProfile);
-router.post("/", createUserProfile);
+// router.post("/", createUserProfile);
 router.put("/", updateUserProfile);
 
 module.exports = router;

@@ -1,29 +1,29 @@
 const { db } = require("../db/config");
 
 const getUserActivity = async (req, res) => {
-  const {userId} = req.body
+  const { userId } = req.body;
   try {
     const { data: connections } = await db.query(
-      `SELECT conn.actorId, conn.status, 
+      `SELECT act.actorId, act.status, 
          users.first_name, users.last_name
-         FROM devtinder.connections 
-         AS conn
+         FROM devtinder.activities 
+         AS act
          INNER JOIN devtinder.users
          AS users
-         ON users.id = conn.actorId
-         WHERE conn.recieverId = ${userId}
-         AND conn.status = "PENDING"`
+         ON users.id = act.actor_id
+         WHERE act.recieverId = ${userId}
+         AND act.status = "PENDING"`
     );
     res.status(200).json(connections);
   } catch (err) {
     res.status(500).json(err);
   }
 };
-const createConnection = async (req, res) => {
+const likeProfile = async (req, res) => {
   const { data } = req.body;
   try {
     const { data: queryResponse } = await db.insert({
-      table: "connections",
+      table: "activities",
       records: [data],
     });
     res.status(200).json(queryResponse);
@@ -31,7 +31,7 @@ const createConnection = async (req, res) => {
     res.status(500).json(err);
   }
 };
-const createRejection = async (req, res) => {
+const dislikeProfile = async (req, res) => {
   const { data } = req.body;
   try {
     const { data: queryResponse } = await db.insert({
@@ -43,12 +43,11 @@ const createRejection = async (req, res) => {
     res.status(500).json(err);
   }
 };
-
-const acceptConnection = async (req, res) => {
+const acceptRequest = async (req, res) => {
   const { data } = req.body;
   try {
     const { data: queryResponse } = await db.update({
-      table: "connections",
+      table: "activities",
       records: [data],
     });
     res.status(200).json(queryResponse);
@@ -56,11 +55,11 @@ const acceptConnection = async (req, res) => {
     res.status(200).json(err);
   }
 };
-const rejectConnection = async (req, res) => {
+const declineRequest = async (req, res) => {
   const { data } = req.body;
   try {
     const { data: queryResponse } = await db.update({
-      table: "connections",
+      table: "activities",
       records: [data],
     });
     res.status(200).json(queryResponse);
@@ -71,8 +70,8 @@ const rejectConnection = async (req, res) => {
 
 module.exports = {
   getUserActivity,
-  createConnection,
-  createRejection,
-  acceptConnection,
-  rejectConnection,
+  likeProfile,
+  dislikeProfile,
+  acceptRequest,
+  declineRequest,
 };
