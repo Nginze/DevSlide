@@ -1,28 +1,22 @@
 import styled from "styled-components";
 
 export const HomeStyled = styled.section`
-    display: flex;
 
+    display: flex;
 
     .feed{
         display: flex;
-        justify-content: center;
-        width:calc(100vw - 50%);
-        flex-grow: 4;
-        margin-top:5rem;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        margin-left:calc(100vw - 85%);
+        margin-top:4rem;
+        gap:9.7rem;
         
     }
 
-    .card{
-        box-shadow: -4px -1px 35px -13px rgba(0,0,0,0.25);
-        border-radius: 13px;
-
+    .settings-wrapper{
+        margin-top:2rem;
     }
 
-    .user-stats{
-        flex-grow:2;
-        margin-top:3rem;
-        
-    }
 
 `

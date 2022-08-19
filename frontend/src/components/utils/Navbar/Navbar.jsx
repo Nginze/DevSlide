@@ -11,14 +11,14 @@ const  Navbar  = () => {
 
   return (
     <Box >
-      <AppBar sx={{height: 67, background:"white", color:"blue" }} position="sticky">
+      <AppBar sx={{height: 70, background:"white", color:"blue" }} position="sticky">
         <Toolbar>
           <Typography variant="h5" component="div" sx={{ flexGrow: 1, fontWeight:500}}>
               👨🏽‍💻  DevSlide
           </Typography>
           <FormControl sx={{flexGrow:2}}>
             <TextField 
-                id="outlined-basic" placeholder="Search developers, jobs, etc" 
+                id="outlined-basic" placeholder="Search developers, jobs, skills etc" 
                 size="small" sx={{width:450}} variant="outlined"
             />
           </FormControl>
