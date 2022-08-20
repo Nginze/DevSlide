@@ -13,8 +13,6 @@
 
 ### Auth(GET)
 
-                                                                                                                                                               
-
 ```js
 fetch("http://localhost:5000/auth/github")
 ```

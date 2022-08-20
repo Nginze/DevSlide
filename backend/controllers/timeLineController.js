@@ -1,18 +1,31 @@
 const { db } = require("../db/config");
 
 const getUserTimeline = async (req, res) => {
-  let { isRecruiter, preferences } = req.body;
+  let { isRecruiter, preferences, userId } = req.body;
   preferences = preferences.map(preference => `'${preference}'`);
   if (isRecruiter) {
     try {
+      let { data: rejections } = await db.searchByValue({
+        table: "rejections",
+        searchAttribute: "actor_id",
+        searchValue: userId,
+        attributes: ["receiver_id"],
+      });
+      rejections = userId + "," +  rejections.map(rejection => rejection.receiver_id).join(',') 
+      if(rejections.endsWith(",")){
+        rejections = rejections.slice(0, -1)
+      }
+      console.log(rejections)
       const { data } = await db.query(
-        `SELECT users.id, users.first_name, users.last_name
-                FROM devtinder.developers_skills as ds
+        `SELECT users.id, users.username,  users.profile_img, users.location
+                FROM devtinder.skills as ds
                 INNER JOIN devtinder.users as users
                 ON ds.userId = users.id 
-                INNER JOIN devtinder.skills as skills 
-                ON  skills.id = ds.skillId
-                WHERE skills.name in (${preferences.join(",")})
+                WHERE users.id NOT IN (${rejections})
+                AND ds.skill_1 in (${preferences.join(",")})
+                OR ds.skill_2 in (${preferences.join(",")})
+                OR ds.skill_3 in (${preferences.join(",")})
+                OR ds.skill_4 in (${preferences.join(",")})
         `
       );
       res.status(200).json(data);
