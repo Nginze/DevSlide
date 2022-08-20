@@ -13,7 +13,6 @@ import {
 import PROFILE_PIC from "../../../assets/default.png";
 import useSearch from "./useSearch";
 
-
 const Navbar = () => {
   const {searchResults, searchTerm, setTerm, isLoading} = useSearch();
   return (
