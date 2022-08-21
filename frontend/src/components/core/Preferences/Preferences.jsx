@@ -24,7 +24,7 @@ const Preferences = () => {
                         <Avatar sx={{width:120, height:120}} 
                              alt="user-profile" src={PROFILE_PIC} 
                         />
-                        <h2>Recruiter Kwame Doe</h2>
+                        <h2>Recruiter Kwame Yaw</h2>
                     </div>
                         <div className="inputs">
                             <Box>
