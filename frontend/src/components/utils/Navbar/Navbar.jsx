@@ -61,7 +61,7 @@ const Navbar = () => {
           />
           <Tooltip title="Your Profile" arrow>
             <Button color="inherit">
-              <Avatar alt="user-profile" src={profile.profile_img} />
+              <Avatar alt="user-profile" src={profile?.profile_img} />
             </Button>
           </Tooltip>
         </Toolbar>

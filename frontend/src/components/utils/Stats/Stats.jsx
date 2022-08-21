@@ -3,12 +3,19 @@ import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { Typography, Box } from "@mui/material";
 import ProgressBar from "react-percent-bar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Stats = ({ skills, skillsProf }) => {
-  const averageProf =
-    skillsProf.reduce((totalSum, curr) => totalSum + curr, 0) /
-    skillsProf.length;
+  const [averageProf, setProf] = useState(
+    skillsProf?.reduce((totalSum, curr) => totalSum + curr, 0) /
+      skillsProf?.length
+  );
+  useEffect(() => {
+    setProf(
+      skillsProf?.reduce((totalSum, curr) => totalSum + curr, 0) /
+        skillsProf?.length
+    );
+  }, [skillsProf]);
   return (
     <>
       <StatStyled>
@@ -29,7 +36,7 @@ const Stats = ({ skills, skillsProf }) => {
           <Typography mt={1} variant="h6">
             Top Skills
           </Typography>
-          {skills.map((skill, index) => {
+          {skills?.map((skill, index) => {
             return (
               <Box mt={1} style={{ cursor: "pointer" }}>
                 <Typography mb={1}>{skill}</Typography>
