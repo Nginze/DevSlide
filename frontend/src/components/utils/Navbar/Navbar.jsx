@@ -12,11 +12,15 @@ import {
 } from "@mui/material";
 import PROFILE_PIC from "../../../assets/default.png";
 import useSearch from "./useSearch";
+import { userContext } from "../../../contexts/UserContext";
+import { useContext } from "react";
+import useProfile from "../../../hooks/useProfile";
 
 const Navbar = () => {
 
-  const {searchResults, searchTerm, setTerm, isLoading} = useSearch();
-
+  const { searchResults, searchTerm, setTerm, isLoading } = useSearch();
+  const { user, isLoading: userLoading } = useContext(userContext);
+  const { profile, loading } = useProfile(user.id);
   return (
     <Box>
       <AppBar
@@ -49,13 +53,15 @@ const Navbar = () => {
                   sx={{ width: 450 }}
                   variant="outlined"
                 />
-                {isLoading && <CircularProgress size={"1.5rem"} sx={{ml: "0.5rem"}}/>}
+                {isLoading && (
+                  <CircularProgress size={"1.5rem"} sx={{ ml: "0.5rem" }} />
+                )}
               </>
             )}
           />
           <Tooltip title="Your Profile" arrow>
             <Button color="inherit">
-              <Avatar alt="user-profile" src={PROFILE_PIC} />
+              <Avatar alt="user-profile" src={profile?.profile_img} />
             </Button>
           </Tooltip>
         </Toolbar>

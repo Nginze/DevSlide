@@ -4,7 +4,7 @@ import { CardStyled } from './CardStyled';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
 
-const DevCard = () => {
+const DevCard = ({username, profile_img, bio}) => {
   return (
     <>     
     <CardStyled>
@@ -12,16 +12,15 @@ const DevCard = () => {
             <CardMedia
                 component="img"
                 height="220"
-                image={PROFILE_PIC}
+                image={profile_img}
                 alt="green iguana"
             />
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                    John Kwame Doe
+                    {username}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                    I am a developer from USA who is proficient in React.js and 
-                    Typescript
+                    {bio}
                 </Typography>
             </CardContent>
 
