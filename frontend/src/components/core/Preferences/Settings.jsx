@@ -7,10 +7,10 @@ import { proficiency } from "../../../helpers";
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import SaveIcon from '@mui/icons-material/Save';
 
-const Settings = () => {
+const Settings = (props) => {
 
     const [skills, setSkills] = useState(devSkills[0])
-
+                    
     const changeSkill = (e) => {
         setSkills(e.target.value)
     }
@@ -25,7 +25,7 @@ const Settings = () => {
     return ( 
         <>
             <SettingStyled>
-                <p className="header">Settings</p>
+                <p className="header">Setup your account</p>
                 <hr></hr>
                 <div className="form-wrapper">
                     <FormControl>   
@@ -58,7 +58,6 @@ const Settings = () => {
                             /> 
                         </Box> 
                         <p className="select">Select your top skills and proficiency (4 maximum*)</p>
-    
                         <div className="inputs">
                             <Select onChange={changeSkill} value={skills} sx={{width:350}}>
                                 {
@@ -92,7 +91,6 @@ const Settings = () => {
                                 }
                             </Select>
                         </div>
-
                         <div className="inputs">
                             <Select onChange={changeSkill} value={skills} sx={{width:350}}>
                                 {
