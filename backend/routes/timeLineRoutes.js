@@ -3,6 +3,6 @@ const { getUserTimeline } = require("../controllers/timeLineController");
 
 const router = Router();
 
-router.get("/", getUserTimeline);
+router.post("/", getUserTimeline);
 
 module.exports = router;

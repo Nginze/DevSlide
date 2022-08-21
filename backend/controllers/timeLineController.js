@@ -2,6 +2,7 @@ const { db } = require("../db/config");
 
 const getUserTimeline = async (req, res) => {
   let { isRecruiter, preferences, userId } = req.body;
+  console.log(req.body);
   preferences = preferences.map(preference => `'${preference}'`);
   if (isRecruiter) {
     try {
@@ -11,21 +12,31 @@ const getUserTimeline = async (req, res) => {
         searchValue: userId,
         attributes: ["receiver_id"],
       });
-      rejections = userId + "," +  rejections.map(rejection => rejection.receiver_id).join(',') 
-      if(rejections.endsWith(",")){
-        rejections = rejections.slice(0, -1)
+      rejections =
+        userId +
+        "," +
+        rejections.map(rejection => rejection.receiver_id).join(",");
+      if (rejections.endsWith(",")) {
+        rejections = rejections.slice(0, -1);
       }
-      console.log(rejections)
+      console.log(rejections);
       const { data } = await db.query(
-        `SELECT users.id, users.username,  users.profile_img, users.location
+        `SELECT users.id, users.location, users.bio, users.profile_img, users.username, 
+                ds.skill_1, ds.skill_2, ds.skill_3, ds.skill_4, 
+                sp.skill_1 as skill_1_prof, sp.skill_2 as skill_2_prof, sp.skill_3 as skill_3_prof, sp.skill_4 as skill_4_prof
                 FROM devtinder.skills as ds
-                INNER JOIN devtinder.users as users
-                ON ds.userId = users.id 
+                INNER JOIN devtinder.users 
+                AS users 
+                ON ds.userId = users.id
+                INNER JOIN devtinder.skills_proficiencies
+                AS sp
+                ON sp.userId = users.id
                 WHERE users.id NOT IN (${rejections})
                 AND ds.skill_1 in (${preferences.join(",")})
                 OR ds.skill_2 in (${preferences.join(",")})
                 OR ds.skill_3 in (${preferences.join(",")})
                 OR ds.skill_4 in (${preferences.join(",")})
+
         `
       );
       res.status(200).json(data);
