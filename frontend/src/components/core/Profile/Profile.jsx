@@ -6,7 +6,7 @@ import ProgressBar from "react-percent-bar";
 import DownloadIcon from "@mui/icons-material/Download";
 import { useContext } from "react";
 import { userContext } from "../../../contexts/UserContext";
-import useProfile from "./hooks/useProfile";
+import useProfile from "../../../hooks/useProfile";
 
 const Profile = () => {
   const { user, isLoading } = useContext(userContext);
