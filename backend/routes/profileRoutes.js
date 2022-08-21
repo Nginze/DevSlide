@@ -6,7 +6,7 @@ const {
 } = require("../controllers/profileController");
 const router = Router();
 
-router.get("/", getUserProfile);
+router.get("/:userId", getUserProfile);
 // router.post("/", createUserProfile);
 router.put("/", updateUserProfile);
 
