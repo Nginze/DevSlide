@@ -11,7 +11,7 @@ const session = require("express-session");
 var FileStore = require("session-file-store")(session);
 const cors = require("cors");
 const passport = require("passport");
-app.use(
+app.use( 
   session({
     store: new FileStore(),
     secret: "secret",
@@ -23,7 +23,7 @@ app.use(
 
 app.use(
   cors({
-    origin: "*",
+    origin: "http://localhost:3000",
     credentials: true,
   })
 );

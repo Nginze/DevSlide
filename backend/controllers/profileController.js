@@ -1,21 +1,19 @@
 const { db } = require("../db/config");
 
 const getUserProfile = async (req, res) => {
-  const { userId } = req.body;
-  // const options = {
-  //   table: "users",
-  //   searchAttribute: 'id',
-  //   searchValue: userId,
-  //   attributes: ["*"],
-  // };
+  const { userId } = req.params;
+  console.log(userId)
   try {
     const { data: profile } = await db.query(
-      `SELECT users.id, users.username, users.location, users.profile_img, users.portfolio_url, ds.skill_1, ds.skill_2, ds.skill_3, ds.skill_4
+      `SELECT users.id, users.username, users.location, users.profile_img, users.portfolio_url, ds.skill_1, ds.skill_2, ds.skill_3, ds.skill_4,sp.skill_1, sp.skill_2, sp.skill_3, sp.skill_4
             FROM devtinder.users 
             AS users
             INNER JOIN devtinder.skills
             AS ds
             ON users.id = ds.userId
+            INNER JOIN devtinder.skills_proficiencies
+            AS sp
+            ON users.id = sp.userId
             WHERE users.id = ${userId}`
     );
     res.status(200).json(profile[0]);
@@ -50,13 +48,19 @@ const createUserProfile = async (req, res) => {
 
 const updateUserProfile = async (req, res) => {
   const { data } = req.body;
-  const options = {
+  const options1 = {
     table: "skills",
-    records: [data],
+    records: [data.skills],
   };
+  const options2 = {
+    table: "skills_proficiencies",
+    records: [data.skills_proficiencies]
+  }
+
   try {
-    const res = await db.upsert(options);
-    res.status(200).json(res);
+    const resSkills = await db.upsert(options1);
+    const resProficiency = await db.upsert(options2)
+    res.status(200).json({resSkills, resProficiency});
   } catch (err) {
     res.status(500).json(err);
   }

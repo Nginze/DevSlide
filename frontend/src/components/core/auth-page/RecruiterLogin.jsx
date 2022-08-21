@@ -1,6 +1,7 @@
 import { TextField, FormControl, Button } from "@mui/material";
 import ConstructionIcon from '@mui/icons-material/Construction';
 import { StateStyled } from "./StateStyled";
+import { handleRecruiterLogin } from "./Utils";
 
 
 const RecruiterLogin = () => {
@@ -11,6 +12,7 @@ const RecruiterLogin = () => {
                             
             <div className="btn-wrapper">
                 <Button 
+                    onClick = {handleRecruiterLogin}
                     startIcon={<ConstructionIcon />}
                     className="btn"
                     variant="contained">

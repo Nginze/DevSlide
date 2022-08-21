@@ -5,10 +5,11 @@ import RecruiterLogin from "./RecruiterLogin";
 import DeveloperLogin from "./DeveloperLogin";
 
 
+
 const Auth = () => {
 
     const [value, setValue] = useState("recruiter")
-
+    
     const handleChange = (e, newValue) => {
         setValue(newValue)
     }
