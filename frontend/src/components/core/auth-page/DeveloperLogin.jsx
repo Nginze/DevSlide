@@ -1,6 +1,8 @@
 import { Button } from "@mui/material";
 import { StateStyled } from "./StateStyled";
 import GitHubIcon from '@mui/icons-material/GitHub';
+import { handleDeveloperLogin } from "./Utils";
+
 
 const DeveloperLogin = () => {
     return ( 
@@ -9,7 +11,8 @@ const DeveloperLogin = () => {
         <div className="auth-box">
                             
             <div className="btn-wrapper dev">
-                <Button 
+                <Button
+                    onClick = {handleDeveloperLogin}
                     startIcon={<GitHubIcon />}
                     className="btn"
                     variant="contained">
