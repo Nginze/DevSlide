@@ -18,7 +18,7 @@ const Auth = () => {
         <>
         <AuthStyled>
         <h2 >Welcome to DevSlide 👋</h2>
-        <p>Connecting developers💻 and recruiters 🤵 </p>
+        <p>Connecting developers 💻 and recruiters 🤵 </p>
             <div className="main_wrapper">
                 <div className="wrappper">
                 <div className="tab-wrapper">
@@ -29,6 +29,7 @@ const Auth = () => {
                         indicatorColor="primary"
                         orientation="horizontal"
                     >
+                    
                     <Tab
                         value="recruiter"
                         className="tab"
@@ -42,7 +43,7 @@ const Auth = () => {
                         
                     </Tabs>
                 </div>
-                    { value === "recruiter" ?  <RecruiterLogin  /> : <DeveloperLogin />}
+                    { value === "recruiter" ?  <RecruiterLogin  /> : <DeveloperLogin /> }
                 </div>
             </div>
         </AuthStyled>

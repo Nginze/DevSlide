@@ -17,6 +17,7 @@ import { useContext } from "react";
 import useProfile from "../../../hooks/useProfile";
 
 const Navbar = () => {
+
   const { searchResults, searchTerm, setTerm, isLoading } = useSearch();
   const { user, isLoading: userLoading } = useContext(userContext);
   const { profile, loading } = useProfile(user.id);
@@ -47,7 +48,7 @@ const Navbar = () => {
                   value={searchTerm}
                   onChange={e => setTerm(e.target.value)}
                   id="outlined-basic"
-                  placeholder="Search developers, jobs, skills etc"
+                  placeholder="Search developers, designers etc..."
                   size="small"
                   sx={{ width: 450 }}
                   variant="outlined"
