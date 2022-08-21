@@ -95,6 +95,7 @@ const Profile = () => {
 
                         <Box mx={2} mt={2}>
                             <div className="social-links">
+                                
                                 <Button variant="contained">Github</Button>
                                 <Button variant="contained"> Dev Portfolio</Button>
                                 <Button variant="contained">Email Address</Button>

@@ -14,7 +14,9 @@ import PROFILE_PIC from "../../../assets/default.png";
 import useSearch from "./useSearch";
 
 const Navbar = () => {
+
   const {searchResults, searchTerm, setTerm, isLoading} = useSearch();
+
   return (
     <Box>
       <AppBar
@@ -42,7 +44,7 @@ const Navbar = () => {
                   value={searchTerm}
                   onChange={e => setTerm(e.target.value)}
                   id="outlined-basic"
-                  placeholder="Search developers, jobs, skills etc"
+                  placeholder="Search developers, designers etc..."
                   size="small"
                   sx={{ width: 450 }}
                   variant="outlined"

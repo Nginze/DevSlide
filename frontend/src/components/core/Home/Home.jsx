@@ -4,10 +4,12 @@ import Sidebar  from "../../utils/Sidebar/Sidebar";
 import Stats from "../../utils/Stats/Stats";
 import { HomeStyled } from "./HomeStyled";
 import { useState } from "react";
+// eslint-disable-next-line
 import Settings from "../Preferences/Settings"
 import styled from "styled-components";
 import Match from "../Matches/Match";
 import Profile from "../Profile/Profile";
+import Preferences from "../Preferences/Preferences";
 
 const EnableScroll = styled.section`
     height:100vh;
@@ -16,7 +18,7 @@ const EnableScroll = styled.section`
 
 const Home = () => {
 
-    const [value, setValue] = useState("swipe")
+    const [value, setValue] = useState("settings")
 
     const handleChange = (e, newValue) => {
         setValue(newValue)
@@ -37,22 +39,25 @@ const Home = () => {
 
                     </div>
                 }
-                { value === "settings" && 
-                <>
-                    <EnableScroll>
-                        <Settings />
-                    </EnableScroll>
-                </>
+                { 
+                    value === "settings" && 
+                    <>
+                        <EnableScroll>
+                            <Preferences />
+                        </EnableScroll>
+                    </> 
                 }
                 {
-                    value === "matches" && <>
+                    value === "matches" &&
+                    <>
                         <Match />
                     </>
                 }
                 {
-                    value === "profile" && <>
-                        <Profile />
-                    </>
+                    value === "profile" &&
+                        <>
+                            <Profile />
+                        </>
                 }
             </HomeStyled>
         </>
