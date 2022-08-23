@@ -5,6 +5,7 @@ import Home from "./components/core/Home/Home";
 import PageNotFound from "./components/errors/page-not-found/PageNotFound";
 import Callback from "./components/core/callback/Callback";
 import UserProvider from "./contexts/UserContext";
+import Outlet from "./components/core/Home/Outlet";
 
 const App = () => {
   return (
@@ -13,7 +14,7 @@ const App = () => {
         <UserProvider>
           <Routes>
             <Route path="/" element={<Auth />} />
-            <Route path="/home" element={<Home />} />
+            <Route path="/home" element={<Outlet/>} />
             <Route path="*" element={<PageNotFound />} />
             <Route path="/auth/callback" element={<Callback />} />
           </Routes>

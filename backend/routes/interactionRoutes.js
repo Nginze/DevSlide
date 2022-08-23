@@ -9,11 +9,13 @@ const {
   dislikeProfile,
   acceptRequest,
   declineRequest,
+  getMatches,
 } = require("../controllers/interactionsController");
 
 const router = Router();
 
-router.get("/activity", getUserActivity);
+router.get("/activity/:userId", getUserActivity);
+router.get("/matches/:userId", getMatches);
 router.post("/like", likeProfile);
 router.post("/dislike", dislikeProfile);
 router.put("/accept", acceptRequest);

@@ -3,23 +3,22 @@ import axios from "axios";
 import React from "react";
 
 const useTimeline = id => {
-  const getTimeline = async () => {
+  const getTimeline = async ({id}) => {
     const { data } = await axios({
       method: "post",
-      url: "http://localhost:5000/timeline",
+      url: `http://localhost:5000/timeline/${id}`,
       withCredentials: true,
       data: {
-        userId: id,
         preferences: ["Casandra", "SQL", "Redis"],
         isRecruiter: true
       },
     });
     return data;
   };
-  const { data: timeline, loading } = useQuery(["timeline", id], () =>
+  const { data: timeline, isLoading } = useQuery(["timeline", id], () =>
     getTimeline({ id })
   );
-  return { timeline, loading };
+  return { timeline, isLoading };
 };
 
 export default useTimeline;

@@ -7,9 +7,14 @@ import { proficiency } from "../../../helpers";
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import SaveIcon from '@mui/icons-material/Save';
 
-const Settings = (props) => {
-
+const Settings = ({user}) => {
+    
     const [skills, setSkills] = useState(devSkills[0])
+    const [username, setUsername] = useState(user?.username)
+    const [email, setEmail] = useState(user?.email)
+    const [bio, setBio] = useState(user?.bio)
+    const [portfolioUrl, setPortfolio] = useState(user?.portfolio_url)
+
                     
     const changeSkill = (e) => {
         setSkills(e.target.value)
@@ -31,28 +36,36 @@ const Settings = (props) => {
                     <FormControl>   
                     <div className="avatar_wrapper">
                         <Avatar sx={{width:120, height:120}} 
-                             alt="user-profile" src={PROFILE_PIC} 
+                             alt="user-profile" src={user?.profile_img} 
                         />
-                        <h2>John Kwame Doe</h2>
+                        <h2>{user?.username}</h2>
                     </div>
                         <div className="inputs">
                             <TextField 
+                                value = {username}
+                                onChange = {(e) => setUsername(e.target.value) }
                                 id="outlined-basic" label="Username" 
                                 size="medium" sx={{width:350}} variant="outlined" 
                             />  
                             <TextField 
+                                value = {email}
+                                onChange = {(e) => setEmail(e.target.value)}
                                 id="outlined-basic" label="Email" 
                                 size="medium" sx={{width:350}} variant="outlined" 
                             />  
                         </div>   
                         <Box>
-                            <TextField                           
+                            <TextField  
+                                value = {bio} 
+                                onChange = {(e) => setBio(e.target.value)}                        
                                 id="outlined-basic" label="Bio" 
                                 size="medium" sx={{width:730}} variant="outlined" 
                             /> 
                         </Box> 
                         <Box mt={2}>
-                            <TextField                           
+                            <TextField     
+                                value = {portfolioUrl} 
+                                onChange = {(e) => setPortfolio(e.target.value)}                    
                                 id="outlined-basic" label="Portfolio URL" 
                                 size="medium" sx={{width:730}} variant="outlined" 
                             /> 

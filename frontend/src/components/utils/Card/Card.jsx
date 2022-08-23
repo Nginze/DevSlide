@@ -4,11 +4,11 @@ import { CardStyled } from './CardStyled';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
 
-const DevCard = ({username, profile_img, bio}) => {
+const DevCard = ({username, profile_img, bio, swipe}) => {
   return (
     <>     
     <CardStyled>
-        <Card className="card" sx={{ maxWidth: 345, height:360 }}>
+        <Card className="card" sx={{ width: 345, height:360 }}>
             <CardMedia
                 component="img"
                 height="220"
@@ -26,19 +26,19 @@ const DevCard = ({username, profile_img, bio}) => {
 
         </Card>
 
-        <div className="buttons">
+        {/* <div className="buttons">
             <Tooltip title="I like it" arrow>
-                <Button variant="contained" className="swipe-right" size="large">
+                <Button onClick={() => swipe("right")} variant="contained" className="swipe-right" size="large">
                     <FavoriteBorderOutlinedIcon sx={{fontSize:30}} />
                 </Button>
             </Tooltip>
 
             <Tooltip title="I dislike it" arrow>
-                <Button variant="contained" className="swipe-left" size="large">
+                <Button onClick = {() => swipe("left")} variant="contained" className="swipe-left" size="large">
                     <ClearOutlinedIcon sx={{fontSize:30}} />
                 </Button>
             </Tooltip>
-        </div>
+        </div> */}
     </CardStyled>
         
     </>

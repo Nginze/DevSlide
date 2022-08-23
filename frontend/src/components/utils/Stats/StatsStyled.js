@@ -7,8 +7,11 @@ export const StatStyled = styled.section`
     height:470px;
     border:1px solid #eee;
     border-radius: 6px;
+    background-color: white;
     padding:20px;
     display: block;
+    position: absolute;
+    right: 220px;
 
     .circular-bar{
         width:120px;

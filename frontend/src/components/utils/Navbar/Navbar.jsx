@@ -14,13 +14,12 @@ import PROFILE_PIC from "../../../assets/default.png";
 import useSearch from "./useSearch";
 import { userContext } from "../../../contexts/UserContext";
 import { useContext } from "react";
-import useProfile from "../../../hooks/useProfile";
+
 
 const Navbar = () => {
 
   const { searchResults, searchTerm, setTerm, isLoading } = useSearch();
   const { user, isLoading: userLoading } = useContext(userContext);
-  const { profile, loading } = useProfile(user.id);
   return (
     <Box>
       <AppBar
@@ -61,7 +60,7 @@ const Navbar = () => {
           />
           <Tooltip title="Your Profile" arrow>
             <Button color="inherit">
-              <Avatar alt="user-profile" src={profile?.profile_img} />
+              <Avatar alt="user-profile" src={user?.profile_img} />
             </Button>
           </Tooltip>
         </Toolbar>
