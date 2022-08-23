@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { userContext } from "../../../contexts/UserContext";
+import Loader from "../../utils/Loader/Loader";
 import Home from "./Home";
 import useTimeline from "./hooks/useTimeline";
-import Loading from "./Loading";
 
 const Outlet = () => {
   const { user } = useContext(userContext);
@@ -10,7 +10,7 @@ const Outlet = () => {
   if (isLoading) {
     return (
       <>
-        <div>Loading...</div>
+        <Loader />
       </>
     );
   }else{

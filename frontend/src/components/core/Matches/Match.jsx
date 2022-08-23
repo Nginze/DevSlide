@@ -1,6 +1,5 @@
 import { MatchStyled } from "./MatchStyled";
 import { CardStyled } from "../../utils/Card/CardStyled";
-import PROFILE_PIC from "../../../assets/default.png";
 import {
   Typography,
   Card,

@@ -1,6 +1,5 @@
 import { FormControl, Avatar, Button, Box, Typography } from "@mui/material";
 import { ProfileStyled } from "./ProfileStyled";
-import PROFILE_PIC from "../../../assets/default.png";
 import EditIcon from "@mui/icons-material/Edit";
 import ProgressBar from "react-percent-bar";
 import DownloadIcon from "@mui/icons-material/Download";
@@ -9,8 +8,8 @@ import { userContext } from "../../../contexts/UserContext";
 
 
 const Profile = () => {
+    //eslint-disable-next-line
   const { user, isLoading } = useContext(userContext);
-  const percent = 66;
 
   return (
     <>
