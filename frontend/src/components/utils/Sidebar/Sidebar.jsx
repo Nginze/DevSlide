@@ -2,7 +2,7 @@ import { SidebarStyled } from "./SidebarStyled";
 import { Tabs, Tab} from '@mui/material';
 import SwipeUpIcon from '@mui/icons-material/SwipeUp';
 import SettingsIcon from '@mui/icons-material/Settings';
-import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
+import NotificationsIcon from '@mui/icons-material/Notifications';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
@@ -41,10 +41,10 @@ const Sidebar = ({ value, handleChange }) => {
                         label="Matches"
                     />
                     <Tab
-                        icon={<BusinessCenterIcon />}
-                        value="jobs"
+                        icon={<NotificationsIcon />}
+                        value="notifications"
                         className="tab"
-                        label="Jobs"
+                        label="Notifications"
                     />
                     <Tab
                         icon={<SettingsIcon />}

@@ -1,26 +1,22 @@
+import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 export const userContext = createContext();
 
 const UserProvider = ({ children }) => {
-  const [user, setUser] = useState({});
-  const [isLoading, setLoading] = useState(false);
   const getUser = async () => {
-    setLoading(true);
-    const {data} = await axios({
+    const { data } = await axios({
       method: "get",
       url: "http://localhost:5000/user",
       withCredentials: true,
     });
-    setUser(data.user);
-    setLoading(false);
+    return data.user;
   };
-  useEffect(() => {
-    getUser();
-  }, []);
+  
+  const { data: user, loading } = useQuery(["user"],() =>  getUser());
 
   return (
-    <userContext.Provider value={{ user, isLoading }}>
+    <userContext.Provider value={{ user, loading }}>
       {children}
     </userContext.Provider>
   );
