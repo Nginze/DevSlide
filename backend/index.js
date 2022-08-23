@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-require("./db/config");
 const userRoutes = require("./routes/usersRoutes");
 const authRoutes = require("./routes/authRoutes");
 const profileRoutes = require("./routes/profileRoutes");
@@ -41,7 +40,7 @@ app.use("/user", userRoutes);
 app.use("/auth", authRoutes);
 app.use("/profile", profileRoutes);
 app.use("/timeline", timeLineRoutes);
-app.use("/interact", interactionRoutes);
+app.use("/", interactionRoutes);
 app.use("/search", searchRoutes);
 app.listen(5000, err => {
   if (err) {

@@ -57,11 +57,19 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser(async (userId, done) => {
   try {
-    const { statusCode, data: user } = await db.searchByHash({
-      table: "users",
-      hashValues: [userId],
-      attributes: ["id"],
-    });
+    const { statusCode, data: user } = await db.query(
+      `SELECT users.id, users.username, users.location, users.profile_img,users.bio, users.portfolio_url, ds.skill_1, ds.skill_2, ds.skill_3, ds.skill_4,sp.skill_1, sp.skill_2, sp.skill_3, sp.skill_4
+            FROM devtinder.users 
+            AS users
+            INNER JOIN devtinder.skills
+            AS ds
+            ON users.id = ds.userId
+            INNER JOIN devtinder.skills_proficiencies
+            AS sp
+            ON users.id = sp.userId
+            WHERE users.id = ${userId}`
+      
+    );
     done(null, user[0]);
   } catch (err) {
     console.log(err);

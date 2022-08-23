@@ -1,8 +1,8 @@
 const { db } = require("../db/config");
 
 const getUserTimeline = async (req, res) => {
-  let { isRecruiter, preferences, userId } = req.body;
-  console.log(req.body);
+  let { isRecruiter, preferences } = req.body;
+  const {userId} = req.params
   preferences = preferences.map(preference => `'${preference}'`);
   if (isRecruiter) {
     try {
@@ -19,7 +19,6 @@ const getUserTimeline = async (req, res) => {
       if (rejections.endsWith(",")) {
         rejections = rejections.slice(0, -1);
       }
-      console.log(rejections);
       const { data } = await db.query(
         `SELECT users.id, users.location, users.bio, users.profile_img, users.username, 
                 ds.skill_1, ds.skill_2, ds.skill_3, ds.skill_4, 

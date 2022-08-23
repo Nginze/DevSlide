@@ -6,11 +6,10 @@ import ProgressBar from "react-percent-bar";
 import DownloadIcon from "@mui/icons-material/Download";
 import { useContext } from "react";
 import { userContext } from "../../../contexts/UserContext";
-import useProfile from "../../../hooks/useProfile";
+
 
 const Profile = () => {
   const { user, isLoading } = useContext(userContext);
-  const { profile, loading } = useProfile(user.id);
   const percent = 66;
 
   return (
@@ -25,14 +24,14 @@ const Profile = () => {
                 <Avatar
                   sx={{ width: 150, height: 150 }}
                   alt="user-profile"
-                  src={profile?.profile_img}
+                  src={user?.profile_img}
                 />
               </div>
               <div className="username-bio">
                 <div className="name-btn">
-                  <h2 className="username">{profile?.username}</h2>
+                  <h2 className="username">{user?.username}</h2>
                 </div>
-                <h4>{profile?.bio}</h4>
+                <h4>{user?.bio}</h4>
               </div>
             </div>
             <Box>
@@ -51,56 +50,56 @@ const Profile = () => {
               </div>
             </Box>
             <Box mx={2} mt={3}>
-              <Typography mb={1}>{profile?.skill_1}</Typography>
+              <Typography mb={1}>{user?.skill_1}</Typography>
               <div className="p-bar">
                 <ProgressBar
                   width="500px"
                   height="12px"
                   colorShift={false}
                   fillColor="#0275d8"
-                  percent={profile?.skill_11 * 100}
+                  percent={user?.skill_11 * 100}
                 />
-                <p>{profile?.skill_11 * 100}%</p>
+                <p>{user?.skill_11 * 100}%</p>
               </div>
             </Box>
 
             <Box mx={2} mt={3}>
-              <Typography mb={1}>{profile?.skill_2}</Typography>
+              <Typography mb={1}>{user?.skill_2}</Typography>
               <div className="p-bar">
                 <ProgressBar
                   width="500px"
                   height="12px"
                   colorShift={false}
                   fillColor="#0275d8"
-                  percent={profile?.skill_21 * 100}
+                  percent={user?.skill_21 * 100}
                 />
-                <p>{profile?.skill_21 * 100}%</p>
+                <p>{user?.skill_21 * 100}%</p>
               </div>
             </Box>
             <Box mx={2} mt={3}>
-              <Typography mb={1}>{profile?.skill_3}</Typography>
+              <Typography mb={1}>{user?.skill_3}</Typography>
               <div className="p-bar">
                 <ProgressBar
                   width="500px"
                   height="12px"
                   colorShift={false}
                   fillColor="#0275d8"
-                  percent={profile?.skill_31 * 100}
+                  percent={user?.skill_31 * 100}
                 />
-                <p>{profile?.skill_31 * 100}%</p>
+                <p>{user?.skill_31 * 100}%</p>
               </div>
             </Box>
             <Box mx={2} mt={3}>
-              <Typography mb={1}>{profile?.skill_4}</Typography>
+              <Typography mb={1}>{user?.skill_4}</Typography>
               <div className="p-bar">
                 <ProgressBar
                   width="500px"
                   height="12px"
                   colorShift={false}
                   fillColor="#0275d8"
-                  percent={profile?.skill_41 * 100}
+                  percent={user?.skill_41 * 100}
                 />
-                <p>{profile?.skill_41 * 100}%</p>
+                <p>{user?.skill_41 * 100}%</p>
               </div>
             </Box>
 

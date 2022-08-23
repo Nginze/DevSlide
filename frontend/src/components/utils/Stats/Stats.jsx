@@ -38,7 +38,7 @@ const Stats = ({ skills, skillsProf }) => {
           </Typography>
           {skills?.map((skill, index) => {
             return (
-              <Box mt={1} style={{ cursor: "pointer" }}>
+              <Box key={index} mt={1} style={{ cursor: "pointer" }}>
                 <Typography mb={1}>{skill}</Typography>
                 <div className="p-bar">
                   <ProgressBar
