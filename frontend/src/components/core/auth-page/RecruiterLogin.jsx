@@ -2,7 +2,7 @@ import { TextField, FormControl, Button } from "@mui/material";
 import ConstructionIcon from '@mui/icons-material/Construction';
 import { StateStyled } from "./StateStyled";
 import { handleRecruiterLogin } from "./Utils";
-
+import GoogleIcon from '@mui/icons-material/Google';
 
 const RecruiterLogin = () => {
     return ( 
@@ -20,7 +20,15 @@ const RecruiterLogin = () => {
                 </Button>
             </div>
                 <p>OR</p>
-                
+
+                <Button
+                    onClick = {handleRecruiterLogin}
+                    startIcon={<GoogleIcon />}
+                    className="btn"
+                    variant="contained">
+                   Sign in with Google
+                </Button>
+{/*                 
                 <FormControl>
                     <TextField 
                         required
@@ -33,7 +41,7 @@ const RecruiterLogin = () => {
                     <div className="btn-wrapper-2">
                         <Button variant="contained" className="btn">Sign Up</Button>
                     </div>
-                </FormControl>      
+                </FormControl>       */}
             </div>
         </StateStyled>
         </>

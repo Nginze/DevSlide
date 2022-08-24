@@ -20,7 +20,6 @@ const getUserActivity = async (req, res) => {
 };
 const getMatches = async (req, res) => {
   const { userId } = req.params;
-  console.log(userId);
   try {
     const { data: connections } = await db.query(
       `SELECT act.receiver_id, act.status, users.username, users.bio, users.profile_img
@@ -38,8 +37,7 @@ const getMatches = async (req, res) => {
   }
 };
 const likeProfile = async (req, res) => {
-  console.log("hit");
-  console.log(req.body);
+
   try {
     const { data: queryResponse } = await db.insert({
       table: "activities",
@@ -51,7 +49,6 @@ const likeProfile = async (req, res) => {
   }
 };
 const dislikeProfile = async (req, res) => {
-  console.log(req.body);
   try {
     const { data: queryResponse } = await db.insert({
       table: "rejections",

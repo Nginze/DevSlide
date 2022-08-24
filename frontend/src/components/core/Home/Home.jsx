@@ -17,21 +17,25 @@ import { useMutation } from "@tanstack/react-query";
 import useMatch from "./hooks/useMatch";
 import Notifications from "../notifications/Notifications";
 import useNotiifications from "./hooks/useNotiifications";
+import Chat from "../chat/Chat";
+import useChat from "./hooks/useChat";
 const EnableScroll = styled.section`
   height: 100vh;
   overflow-y: auto;
 `;
 
-const Home = ({ db, user }) => {
+const Home = ({ db, user, socket}) => {
   const [value, setValue] = useState("swipe");
-
   const [currentIndex, setCurrentIndex] = useState(db.length - 1);
   const [lastDirection, setLastDirection] = useState();
-  const {matches, isLoading} = useMatch(user?.id)
-  const {notifications} = useNotiifications(user?.id)
+  const { matches, isLoading } = useMatch(user?.id);
+  const { notifications } = useNotiifications(user?.id);
+  const { chats } = useChat(user?.id);
   const [currentSlide, setSlide] = useState(db[currentIndex]);
   const currentIndexRef = useRef(currentIndex);
-
+  useEffect(() => {
+    socket.emit("login", { userId: user?.id });
+  }, []);
   useEffect(() => {
     setSlide(db[currentIndex]);
   }, [currentIndex]);
@@ -110,7 +114,7 @@ const Home = ({ db, user }) => {
     <>
       <Navbar />
       <HomeStyled>
-        <Sidebar value={value} handleChange={handleChange} />
+        <Sidebar value={value} handleChange={handleChange} user = {user} />
         {value === "swipe" && (
           <div className="feed">
             {db?.map((user, index) => (
@@ -220,12 +224,18 @@ const Home = ({ db, user }) => {
         )}
         {value === "matches" && (
           <>
-            <Match matches={matches}  />
+            <Match matches={matches} />
           </>
         )}
         {value === "notifications" && (
           <>
-            <Notifications notifications={notifications}/>
+            <Notifications notifications={notifications} user={user} />
+          </>
+        )}
+
+        {value === "chats" && (
+          <>
+            <Chat user={user} chats={chats} socket={socket} />
           </>
         )}
         {value === "profile" && (

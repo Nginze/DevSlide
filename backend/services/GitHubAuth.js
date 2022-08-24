@@ -10,13 +10,13 @@ passport.use(
       callbackURL: process.env.GITHUB_CALLBACK_URL,
     },
     async (accessToken, refreshToken, profile, done) => {
-      console.log(profile)
+
       const options = {
         table: "users",
         records: [
           {
             id: profile.id,
-            username: profile.displayName,
+            username: profile.username,
             bio: profile.bio,
             portfolio_url: profile._json.blog,
             profile_img: profile.photos[0].value,
