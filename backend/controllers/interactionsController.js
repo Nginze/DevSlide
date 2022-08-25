@@ -4,12 +4,12 @@ const getUserActivity = async (req, res) => {
   const { userId } = req.params;
   try {
     const { data: connections } = await db.query(
-      `SELECT act.id, act.actor_id, act.status, users.username
+      `SELECT act.id, act.actor_id, act.status, rc.username
          FROM devtinder.activities 
          AS act
-         INNER JOIN devtinder.users
-         AS users
-         ON users.id = act.actor_id
+         INNER JOIN devtinder.recruiters
+         AS rc
+         ON rc.id = act.actor_id
          WHERE act.receiver_id = ${userId}
          AND act.status = "PENDING"`
     );
@@ -37,7 +37,7 @@ const getMatches = async (req, res) => {
   }
 };
 const likeProfile = async (req, res) => {
-
+  console.log(req.body)
   try {
     const { data: queryResponse } = await db.insert({
       table: "activities",

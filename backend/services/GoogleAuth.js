@@ -38,7 +38,7 @@ passport.use(
           if (statusCode == 200) {
             const { data: user } = await db.searchByHash({
               table: "recruiters",
-              hashValues: [queryResponse.inserted_hashes[0]],
+              hashValues: [profile.id],
               attributes: ["*"],
             });
             console.log(queryResponse)
@@ -61,9 +61,6 @@ passport.deserializeUser(async (userId, done) => {
       `SELECT rc.id, rc.username, rc.profile_img, rc.bio, rc.location, rc.isRecruiter
             FROM devtinder.recruiters 
             AS rc
-            INNER JOIN devtinder.preferences
-            AS pf
-            ON rc.id = pf.userId
             WHERE rc.id = ${userId}`
       
     );
