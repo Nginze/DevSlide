@@ -10,13 +10,13 @@ passport.use(
       callbackURL: process.env.GITHUB_CALLBACK_URL,
     },
     async (accessToken, refreshToken, profile, done) => {
-      console.log(profile)
+
       const options = {
         table: "users",
         records: [
           {
             id: profile.id,
-            username: profile.displayName,
+            username: profile.username,
             bio: profile.bio,
             portfolio_url: profile._json.blog,
             profile_img: profile.photos[0].value,
@@ -58,7 +58,7 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser(async (userId, done) => {
   try {
     const { statusCode, data: user } = await db.query(
-      `SELECT users.id, users.username, users.location, users.profile_img,users.bio, users.portfolio_url, ds.skill_1, ds.skill_2, ds.skill_3, ds.skill_4,sp.skill_1, sp.skill_2, sp.skill_3, sp.skill_4
+      `SELECT users.id, users.username, users.location, users.profile_img, users.github_username, users.bio, users.portfolio_url, ds.skill_1, ds.skill_2, ds.skill_3, ds.skill_4,sp.skill_1, sp.skill_2, sp.skill_3, sp.skill_4
             FROM devtinder.users 
             AS users
             INNER JOIN devtinder.skills

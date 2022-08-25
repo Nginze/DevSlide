@@ -17,6 +17,9 @@ import { useMutation } from "@tanstack/react-query";
 import useMatch from "./hooks/useMatch";
 import Notifications from "../notifications/Notifications";
 import useNotiifications from "./hooks/useNotiifications";
+import Chat from "../chat/Chat";
+import useChat from "./hooks/useChat";
+
 
 
 const EnableScroll = styled.section`
@@ -24,18 +27,21 @@ const EnableScroll = styled.section`
   overflow-y: auto;
 `
 
-const Home = ({ db, user }) => {
-  const [value, setValue] = useState("swipe");
-
+const Home = ({ db, user, socket}) => {
+  const [value, setValue] = useState(user.isRecruiter ? "swipe" : "profile");
   const [currentIndex, setCurrentIndex] = useState(db.length - 1);
   //eslint-disable-next-line
   const [lastDirection, setLastDirection] = useState();
+
+  const { chats } = useChat(user?.id, user.isRecruiter);
   //eslint-disable-next-line
   const {matches, isLoading} = useMatch(user?.id)
   const {notifications} = useNotiifications(user?.id)
   const [currentSlide, setSlide] = useState(db[currentIndex]);
   const currentIndexRef = useRef(currentIndex);
-
+  useEffect(() => {
+    socket.emit("login", { userId: user?.id });
+  }, []);
   useEffect(() => {
     setSlide(db[currentIndex]);
       //eslint-disable-next-line
@@ -107,9 +113,9 @@ const Home = ({ db, user }) => {
     <>
       <Navbar />
       <HomeStyled>
-        <Sidebar value={value} handleChange={handleChange} />
+        <Sidebar value={value} handleChange={handleChange} user = {user} />
         {value === "swipe" && (
-          <div className="feed">
+          db.length > 0 ? <div className="feed">
             {db?.map((user, index) => (
               <>
                 <div
@@ -186,7 +192,7 @@ const Home = ({ db, user }) => {
                 />
               )}
             </div>
-          </div>
+          </div> : <div>No more developers  </div>
         )}
 
       
@@ -199,17 +205,23 @@ const Home = ({ db, user }) => {
         )}
         {value === "matches" && (
           <>
-            <Match matches={matches}  />
+            <Match matches={matches} />
           </>
         )}
         {value === "notifications" && (
           <>
-            <Notifications notifications={notifications}/>
+            <Notifications notifications={notifications} user={user} />
+          </>
+        )}
+
+        {value === "chats" && (
+          <>
+            <Chat user={user} chats={chats} socket={socket} />
           </>
         )}
         {value === "profile" && (
           <>
-            <Profile />
+            <Profile  setValue = {setValue}/>
           </>
         )}
       </HomeStyled>
