@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const ProfileStyled = styled.section`
 
-    width: 900px;
-    margin:0.5rem;
+    width: 85vw;
+    margin-top:0.5rem;
     height:100vh;
     padding:10px;
     position: sticky;

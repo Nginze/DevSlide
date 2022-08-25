@@ -14,7 +14,7 @@ export const CardStyled = styled.section`
     .card{
         box-shadow: -4px -1px 17px -5px rgba(0,0,0,0.2);
         border-radius: 13px;
-        height:360px;
+        height:100%;
 
     }
 

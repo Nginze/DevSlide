@@ -21,6 +21,7 @@ import { isOwnMessage } from "./helpers";
 
 const useStyles = makeStyles({
   table: {
+
     minWidth: "100%",
   },
   chatSection: {
@@ -68,6 +69,7 @@ const Chat = ({ user, chats, socket }) => {
     {
       onMutate: async variables => {
         await queryClient.cancelQueries(["messages", currentChatId]);
+        // eslint-disable-next-line
         const previousMessages = queryClient.getQueryData([
           "messages",
           currentChatId,
@@ -93,7 +95,7 @@ const Chat = ({ user, chats, socket }) => {
     }
   );
   return (
-    <div style={{ width: "100%" }}>
+    <div style={{ width: "80vw" }}>
       <Grid container>
         <Grid item xs={12}>
           <Typography variant="h5" className="header-message"></Typography>
@@ -110,14 +112,7 @@ const Chat = ({ user, chats, socket }) => {
             </ListItem>
           </List>
           <Divider />
-          <Grid item xs={12} style={{ padding: "10px" }}>
-            <TextField
-              id="outlined-basic-email"
-              label="Search"
-              variant="outlined"
-              fullWidth
-            />
-          </Grid>
+
           <Divider />
           <List>
             {chats?.map(chat => (
@@ -142,7 +137,8 @@ const Chat = ({ user, chats, socket }) => {
         </Grid>
         <Grid item xs={9}>
           <List className={classes.messageArea}>
-            {messages?.map(message => {
+            {
+              messages?.map(message => {
               if (isOwnMessage(message.sender_id, user?.id)) {
                 return (
                   <ListItem key={message.id}>
@@ -164,7 +160,7 @@ const Chat = ({ user, chats, socket }) => {
                       </Grid>
                     </Grid>
                   </ListItem>
-                );
+                )
               }
               return (
                 <ListItem key={message.id}>
@@ -187,8 +183,20 @@ const Chat = ({ user, chats, socket }) => {
                   </Grid>
                 </ListItem>
               );
-            })}
+            }) }
           </List>
+          {
+            chats.length === 0 && 
+            <>
+               <>
+              <Box sx={{display:'flex', justifyContent:"center"}}>
+                <h3>
+                  No messages yet...Start Chatting 👋
+                </h3>
+              </Box>
+            </>
+            </>
+          }
           <Divider />
           <Grid container style={{ padding: "20px" }}>
             <Grid item xs={11}>

@@ -19,6 +19,7 @@ import Notifications from "../notifications/Notifications";
 import useNotiifications from "./hooks/useNotiifications";
 import Chat from "../chat/Chat";
 import useChat from "./hooks/useChat";
+import Preferences from "../Preferences/Preferences";
 
 
 
@@ -28,7 +29,7 @@ const EnableScroll = styled.section`
 `
 
 const Home = ({ db, user, socket}) => {
-  const [value, setValue] = useState(user.isRecruiter ? "swipe" : "profile");
+    const [value, setValue] = useState(user.isRecruiter ? "swipe" : "settings");
   const [currentIndex, setCurrentIndex] = useState(db.length - 1);
   //eslint-disable-next-line
   const [lastDirection, setLastDirection] = useState();
@@ -199,7 +200,10 @@ const Home = ({ db, user, socket}) => {
         {value === "settings" && (
           <>
             <EnableScroll>
-              <Settings user={user} />
+              {
+                user.isRecruiter ? <Preferences user={user} /> :
+                <Settings user={user} />
+              }
             </EnableScroll>
           </>
         )}
@@ -221,6 +225,7 @@ const Home = ({ db, user, socket}) => {
         )}
         {value === "profile" && (
           <>
+            
             <Profile  setValue = {setValue}/>
           </>
         )}

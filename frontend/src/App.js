@@ -9,6 +9,7 @@ import Outlet from "./components/core/Home/Outlet";
 import { socket } from "./services/socket";
 
 import Match from "./components/core/Matches/Match";
+import IndieProfile from "./components/IndieProfile/IndieProfile";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Auth />} />
             <Route path="/home" element={<Outlet socket={socket} />} />
+            <Route path="/indie-profile/:username" element={<IndieProfile />} />
             <Route path="/matches" element={<Match />} />
             <Route path="*" element={<PageNotFound />} />
             <Route path="/auth/callback" element={<Callback />} />
