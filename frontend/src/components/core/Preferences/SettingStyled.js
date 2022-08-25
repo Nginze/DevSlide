@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const SettingStyled = styled.section`
 
-    width: 800px;
+    width: 80vw;
     margin:0.5rem;
     height:500px;
     padding:10px;

@@ -1,6 +1,28 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import React from "react";
+import { Box, Button } from "@mui/material";
+import styled from "styled-components";
+
+const NotifStyled = styled.div`
+
+  overflow-y:scroll;
+  height:100vh;
+  width:90vw;
+
+
+  .notif-box{
+      width: 300px;
+      box-shadow: -4px -1px 17px -5px rgba(0,0,0,0.2);
+      border-radius: 8px;
+      height:120px;
+      padding:10px;
+
+  }
+
+`
+
+
 
 const Notifications = ({ notifications, user }) => {
   const queryClient = useQueryClient();
@@ -54,16 +76,37 @@ const Notifications = ({ notifications, user }) => {
     }
   );
   return (
+      <NotifStyled>      
     <div>
-      {notifications?.map(noti => (
-        <div>
-          <img src={noti.profile_img} />
-          <h1>{noti.username}</h1>
-          <button onClick={() => accept.mutate(noti)}>Accept</button>
-          <button onClick={() => reject.mutate(noti)}>Reject</button>
+      {
+        notifications ? notifications.map(noti => (
+          <> 
+          <Box m={4}>  
+              <div className="notif-box">
+                <img alt="" src={noti.profile_img} />
+                <h3>{noti.username}</h3>
+                <Box mt={3}>
+                  <Button onClick={() => accept.mutate(noti)}>Accept</Button>
+                  <Button sx={{color:"#d9534f"}} onClick={() => reject.mutate(noti)}>Reject</Button>
+                </Box>
+              </div>
+          </Box>
+
+
+          </>
+
+)) : 
+<>
+        <div style={{display:"flex", justifyContent:"center", marginTop:"25vh", marginLeft:"30vw"}}>
+              <h2>
+              You have no notifications yet
+              </h2>
         </div>
-      ))}
+       </>
+      }
     </div>
+    <div style={{height:"100px"}}></div>
+      </NotifStyled>
   );
 };
 

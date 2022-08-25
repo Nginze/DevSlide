@@ -8,7 +8,6 @@ import {
   Button,
 } from "@mui/material";
 import { SettingStyled } from "./SettingStyled";
-import PROFILE_PIC from "../../../assets/default.png";
 import { useState } from "react";
 import { devSkills } from "../../../helpers";
 import { proficiency } from "../../../helpers";
