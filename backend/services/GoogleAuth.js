@@ -41,6 +41,7 @@ passport.use(
               hashValues: [queryResponse.inserted_hashes[0]],
               attributes: ["*"],
             });
+            console.log(queryResponse)
             done(null, user[0]);
           }
         }

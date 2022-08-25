@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
-const useChat = id => {
+const useChat = (id, isRecruiter) => {
   const getChats = async ({ id }) => {
     const { data } = await axios({
       method: "get",
-      url: id === 111935441 ? `http://localhost:5000/chat/r/${id}` : `http://localhost:5000/chat/d/${id}`,
+      url: isRecruiter ? `http://localhost:5000/chat/r/${id}` : `http://localhost:5000/chat/d/${id}`,
       withCredentials: true
     });
     return data;

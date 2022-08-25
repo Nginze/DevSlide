@@ -16,10 +16,10 @@ const getDeveloperChats = async (req, res) => {
   const { userId } = req.params;
   try {
     const {data} = await db.query(
-      `SELECT ch.id, users.id, users.username, users.bio, users.profile_img
+      `SELECT ch.id, rc.id, rc.username, rc.bio, rc.profile_img
               FROM devtinder.chats as ch
-              INNER JOIN devtinder.users as users
-              ON users.id = ch.recruiter_id
+              INNER JOIN devtinder.recruiters as rc
+              ON rc.id = ch.recruiter_id
               WHERE ch.developer_id = ${userId}
              `
     );
@@ -36,7 +36,7 @@ const getRecruiterChats= async (req, res) => {
     const {data} = await db.query(
       `SELECT ch.id, users.id, users.username, users.bio, users.profile_img
               FROM devtinder.chats as ch
-              INNER JOIN devtinder.users as users
+              INNER JOIN devtinder.users as users 
               ON users.id = ch.developer_id
               WHERE ch.recruiter_id = ${userId}
              `

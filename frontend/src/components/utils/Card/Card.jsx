@@ -1,10 +1,8 @@
-import PROFILE_PIC from "../../../assets/default.png";
-import { Button, Tooltip, Typography, CardMedia, CardContent, Card } from '@mui/material';
+import { Typography, CardMedia, CardContent, Card } from '@mui/material';
 import { CardStyled } from './CardStyled';
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
 
-const DevCard = ({username, profile_img, bio, swipe}) => {
+
+const DevCard = ({username, profile_img, bio}) => {
   return (
     <>     
     <CardStyled>
@@ -19,26 +17,12 @@ const DevCard = ({username, profile_img, bio, swipe}) => {
                 <Typography gutterBottom variant="h5" component="div">
                     {username}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography sx={{fontSize:15}} variant="small" color="text.secondary">
                     {bio}
                 </Typography>
             </CardContent>
 
         </Card>
-
-        {/* <div className="buttons">
-            <Tooltip title="I like it" arrow>
-                <Button onClick={() => swipe("right")} variant="contained" className="swipe-right" size="large">
-                    <FavoriteBorderOutlinedIcon sx={{fontSize:30}} />
-                </Button>
-            </Tooltip>
-
-            <Tooltip title="I dislike it" arrow>
-                <Button onClick = {() => swipe("left")} variant="contained" className="swipe-left" size="large">
-                    <ClearOutlinedIcon sx={{fontSize:30}} />
-                </Button>
-            </Tooltip>
-        </div> */}
     </CardStyled>
         
     </>
