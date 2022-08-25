@@ -2,7 +2,6 @@ const { db } = require("../db/config");
 
 const search = async (req, res) => {
   const { keyw } = req.query;
-  console.log(keyw);
   try {
     const { data: searchResults } = await db.query(
       `SELECT users.id, users.username, users.profile_img

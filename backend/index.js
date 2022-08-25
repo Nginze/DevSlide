@@ -6,11 +6,13 @@ const profileRoutes = require("./routes/profileRoutes");
 const timeLineRoutes = require("./routes/timeLineRoutes");
 const interactionRoutes = require("./routes/interactionRoutes");
 const searchRoutes = require("./routes/searchRoutes");
+const messageRoutes = require("./routes/messageRoutes");
+const chatRoutes = require("./routes/chatRoutes");
 const session = require("express-session");
 var FileStore = require("session-file-store")(session);
 const cors = require("cors");
 const passport = require("passport");
-app.use( 
+app.use(
   session({
     store: new FileStore(),
     secret: "secret",
@@ -42,6 +44,8 @@ app.use("/profile", profileRoutes);
 app.use("/timeline", timeLineRoutes);
 app.use("/", interactionRoutes);
 app.use("/search", searchRoutes);
+app.use("/message", messageRoutes);
+app.use("/chat", chatRoutes);
 app.listen(5000, err => {
   if (err) {
     console.log(err);

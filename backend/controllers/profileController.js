@@ -2,7 +2,6 @@ const { db } = require("../db/config");
 
 const getUserProfile = async (req, res) => {
   const { userId } = req.params;
-  console.log(userId)
   try {
     const { data: profile } = await db.query(
       `SELECT users.id, users.username, users.location, users.profile_img, users.portfolio_url, ds.skill_1, ds.skill_2, ds.skill_3, ds.skill_4,sp.skill_1, sp.skill_2, sp.skill_3, sp.skill_4

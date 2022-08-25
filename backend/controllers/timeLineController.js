@@ -31,12 +31,7 @@ const getUserTimeline = async (req, res) => {
                 AS sp
                 ON sp.userId = users.id
                 WHERE users.id NOT IN (${rejections})
-                AND ds.skill_1 in (${preferences.join(",")})
-                OR ds.skill_2 in (${preferences.join(",")})
-                OR ds.skill_3 in (${preferences.join(",")})
-                OR ds.skill_4 in (${preferences.join(",")})
-
-        `
+                `
       );
       res.status(200).json(data);
     } catch (err) {
