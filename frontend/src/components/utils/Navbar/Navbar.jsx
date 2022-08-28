@@ -10,7 +10,6 @@ import {
   Autocomplete,
   CircularProgress,
 } from "@mui/material";
-import PROFILE_PIC from "../../../assets/default.png";
 import useSearch from "./useSearch";
 import { userContext } from "../../../contexts/UserContext";
 import { useContext } from "react";
@@ -63,6 +62,7 @@ const Navbar = () => {
               <Avatar alt="user-profile" src={user?.profile_img} />
             </Button>
           </Tooltip>
+          <Button >Logout</Button>
         </Toolbar>
       </AppBar>
     </Box>

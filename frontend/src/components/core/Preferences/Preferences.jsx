@@ -8,7 +8,7 @@ import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import { devSkills } from "../../../helpers";
 
 
-const Preferences = () => {
+const Preferences = ({ user }) => {
 
     const icon = <CheckBoxOutlineBlankIcon fontSize="small" />
     const checkedIcon = <CheckBoxIcon fontSize="small" />
@@ -24,7 +24,7 @@ const Preferences = () => {
                         <Avatar sx={{width:120, height:120}} 
                              alt="user-profile" src={PROFILE_PIC} 
                         />
-                        <h2>Recruiter Kwame Yaw</h2>
+                        <h2>{user.username}</h2>
                     </div>
                         <div className="inputs">
                             <Box>

@@ -9,6 +9,7 @@ import {
   Button,
 } from "@mui/material";
 import LaunchIcon from "@mui/icons-material/Launch";
+import { Link } from "react-router-dom"
 
 const Match = ({ matches }) => {
   return (
@@ -32,12 +33,14 @@ const Match = ({ matches }) => {
                     {match?.username}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                   {match?.bio}
+                    {match.bio ? match.bio : "No bio available"}
                   </Typography>
                 </CardContent>
                 <CardActions>
                   <Button endIcon={<LaunchIcon />} size="medium">
-                    Visit Profile
+                    <Link style={{textDecoration:"none", color:"#0275d8"}} to={`/indie-profile/${match.username}`}>
+                       Visit Profile
+                    </Link>
                   </Button>
                 </CardActions>
               </Card>

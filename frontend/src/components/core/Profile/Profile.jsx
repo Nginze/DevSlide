@@ -40,12 +40,18 @@ const Profile = ({ setValue }) => {
                 >
                   Edit Your Profile
                 </Button>
-                <Button startIcon={<DownloadIcon />}>Download Resume</Button>
+                {
+                  user.isRecruiter ? "" : 
+                    <Button startIcon={<DownloadIcon />}>Download Resume</Button>
+                }
               </div>
             </Box>
-            <Box mt={3}>
-              <GitHubCalendar username={user.github_username} />
-            </Box>
+              {
+                user.isRecruiter ? "" :
+                <Box mt={3}>
+                    <GitHubCalendar username={user.github_username} />
+                </Box>
+              }
             {!user.isRecruiter && (
               <>
                 <Box mt={3}>
