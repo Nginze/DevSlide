@@ -14,7 +14,7 @@ export const CardStyled = styled.section`
     .card{
         box-shadow: -4px -1px 17px -5px rgba(0,0,0,0.2);
         border-radius: 13px;
-        height:100%;
+        height:380px;
 
     }
 
@@ -39,7 +39,7 @@ export const CardStyled = styled.section`
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         gap:2rem;
-        margin-bottom:3rem;
+        margin-bottom:1rem;
 
     }
 
