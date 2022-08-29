@@ -10,7 +10,7 @@ const RecruiterLogin = () => {
         <StateStyled>
         <div className="auth-box">
                             
-            <div className="btn-wrapper">
+            {/* <div className="btn-wrapper">
                 <Button 
                     onClick = {handleRecruiterLogin}
                     startIcon={<ConstructionIcon />}
@@ -18,9 +18,8 @@ const RecruiterLogin = () => {
                     variant="contained">
                     Use a demo account
                 </Button>
-            </div>
-                <p>OR</p>
-
+            </div> */}
+            <div className="btn-wrapper">
                 <Button
                     onClick = {handleRecruiterLogin}
                     startIcon={<GoogleIcon />}
@@ -28,7 +27,10 @@ const RecruiterLogin = () => {
                     variant="contained">
                    Sign in with Google
                 </Button>
-{/*                 
+            </div>
+            <p>OR</p>
+
+                
                 <FormControl>
                     <TextField 
                         required
@@ -41,7 +43,7 @@ const RecruiterLogin = () => {
                     <div className="btn-wrapper-2">
                         <Button variant="contained" className="btn">Sign Up</Button>
                     </div>
-                </FormControl>       */}
+                </FormControl>      
             </div>
         </StateStyled>
         </>
